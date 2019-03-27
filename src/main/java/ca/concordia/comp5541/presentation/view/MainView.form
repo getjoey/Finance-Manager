@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ca.concordia.comp5541.presentation.view.MainView">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="627" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="87096">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="65b61" class="javax.swing.JTable" binding="tblExpenses">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="a557" binding="footerPanel" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="4" left="10" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="28"/>
+            <maximum-size width="-1" height="28"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="132ee" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Total:"/>
+            </properties>
+          </component>
+          <component id="87a4" class="javax.swing.JLabel" binding="lblTotal">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font style="1"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <hspacer id="589a6">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <grid id="4068d" binding="filterPanel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="5" left="10" bottom="5" right="10"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="a5b77" class="javax.swing.JRadioButton" binding="optExpenses">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text value="All Expenses"/>
+            </properties>
+          </component>
+          <hspacer id="431c0">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="7cdda" class="javax.swing.JRadioButton" binding="optBills">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Bills"/>
+            </properties>
+          </component>
+          <component id="8c4b5" class="javax.swing.JRadioButton" binding="optPurchases">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Purchases"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <toolbar id="3c4ba" binding="mainToolbar">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="40"/>
+          </grid>
+        </constraints>
+        <properties>
+          <floatable value="false"/>
+          <margin top="20" left="20" bottom="20" right="20"/>
+        </properties>
+        <border type="etched"/>
+        <children>
+          <grid id="ac124" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="5" height="2147483647"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="681be" class="javax.swing.JButton" binding="btnNewBill">
+            <constraints/>
+            <properties>
+              <margin top="5" left="5" bottom="5" right="5"/>
+              <text value="New Bill..."/>
+            </properties>
+          </component>
+          <grid id="cf73b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="5" height="2147483647"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="93655" class="javax.swing.JButton" binding="btnNewPurchase">
+            <constraints/>
+            <properties>
+              <margin top="5" left="5" bottom="5" right="5"/>
+              <text value="New Purchase..."/>
+            </properties>
+          </component>
+          <grid id="61a7f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="10" height="2147483647"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="2055a" class="javax.swing.JButton" binding="btnEdit">
+            <constraints/>
+            <properties>
+              <enabled value="false"/>
+              <margin top="5" left="5" bottom="5" right="5"/>
+              <text value="Edit"/>
+            </properties>
+          </component>
+          <grid id="37cb7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="5" height="2147483647"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="39ea3" class="javax.swing.JButton" binding="btnDelete">
+            <constraints/>
+            <properties>
+              <enabled value="false"/>
+              <margin top="5" left="5" bottom="5" right="5"/>
+              <text value="Delete"/>
+            </properties>
+          </component>
+          <grid id="52378" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="10" height="2147483647"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="1a647" class="javax.swing.JButton" binding="btnMarkAsPaid">
+            <constraints/>
+            <properties>
+              <enabled value="false"/>
+              <label value="Mark As Paid"/>
+              <margin top="5" left="5" bottom="5" right="5"/>
+              <text value="Mark As Paid"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="filterType">
+      <member id="8c4b5"/>
+      <member id="7cdda"/>
+      <member id="a5b77"/>
+    </group>
+  </buttonGroups>
+</form>
