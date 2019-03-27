@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class PurchaseController extends ExpenseController {
 
+
+
     @Override
     public Map<String, Class> getColumnsMetadata() {
         Map<String, Class> columnsMetadata = new LinkedHashMap<>();
@@ -34,7 +36,8 @@ public class PurchaseController extends ExpenseController {
                         e.getAmount(),
                         e.getPaid(),
                         e.getPaymentMethod(),
-                        e.getDueDate())).collect(Collectors.toList());
+                        e.getDueDate(),
+                        e.getSubExpenses())).collect(Collectors.toList());
     }
 
     public void save(PurchaseViewModel viewModel) {
@@ -47,7 +50,11 @@ public class PurchaseController extends ExpenseController {
         model.setPaid(viewModel.getPaid());
         model.setDueDate(viewModel.getDueDate());
         model.setPaymentMethod(model.getPaymentMethod());
+        //new code inc 2
+        model.setSubExpenses(viewModel.getSubExpenses());
 
         expenseBusiness.save(model);
     }
+
+
 }

@@ -35,7 +35,8 @@ public class BillController extends ExpenseController {
                         e.getDescription(),
                         e.getAmount(),
                         e.getPaid(),
-                        e.getInterval())).collect(Collectors.toList());
+                        e.getInterval(),
+                        e.getSubExpenses())).collect(Collectors.toList());
     }
 
     public void save(BillViewModel viewModel) {
@@ -47,6 +48,8 @@ public class BillController extends ExpenseController {
         model.setAmount(viewModel.getAmount());
         model.setPaid(viewModel.getPaid());
         model.setInterval(viewModel.getInterval());
+        //new code inc2
+        model.setSubExpenses(viewModel.getSubExpenses());
 
         expenseBusiness.save(model);
     }

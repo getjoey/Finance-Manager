@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PurchaseControllerTest {
@@ -16,6 +17,7 @@ public class PurchaseControllerTest {
 
     Bill bill1;
     Purchase purchase1;
+    ArrayList<SubExpense> subExpenses;
 
     @Before
     public void before() throws Exception {
@@ -24,11 +26,18 @@ public class PurchaseControllerTest {
 
         bill1 = new Bill();
         bill1.setInterval(RepeatInterval.ANNUALLY);
-        bill1.setAmount(100);
+        bill1.setAmount(100); // will be overwritten by subexpenses
+        subExpenses = bill1.getSubExpenses();
+        subExpenses.add(new SubExpense());
+        subExpenses.get(0).setAmount(24.44);
+
 
         purchase1 = new Purchase();
         purchase1.setPaymentMethod(PaymentMethod.CREDIT);
-        purchase1.setAmount(50);
+        purchase1.setAmount(50);// will be overwritten by subexpenses
+        subExpenses = purchase1.getSubExpenses();
+        subExpenses.add(new SubExpense());
+        subExpenses.get(0).setAmount(24.44);
 
         expenseBusiness.save(bill1);
         expenseBusiness.save(purchase1);
@@ -50,6 +59,11 @@ public class PurchaseControllerTest {
     @Test
     public void testGetList() throws Exception {
         assert controller.getList().size() == 1;
+    }
+
+    @Test
+    public void testGetSubExpenses() throws Exception{
+        assert controller.getList().get(0).getSubExpenses().size() == 1;
     }
 
     @Test

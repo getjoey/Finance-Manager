@@ -59,7 +59,16 @@ public class ExpenseTableViewModel extends AbstractTableModel {
         return columnClasses[column];
     }
 
+
+
     public ExpenseViewModel getDataAtRow(int rowIndex) {
         return rowIndex >= 0 ? data.get(rowIndex) : null;
+    }
+
+
+    //new code inc2
+    public void removeRow(int row) {
+        // remove a row from your internal data structure
+        this.data.remove(row);
     }
 }

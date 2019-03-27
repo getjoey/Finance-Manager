@@ -51,6 +51,9 @@ public class ExpenseBusiness {
     }
 
     public void save(Expense expense) {
+
+        setProperValues(expense); // inc 2 addition
+
         if (expense instanceof Bill) {
             billRepository.save((Bill)expense);
         } else {
@@ -65,4 +68,36 @@ public class ExpenseBusiness {
             return purchaseRepository.delete((Purchase)expense);
         }
     }
+
+    //inc 2 addition
+    //sets proper values... upon save. overwrites Expense if subexpense are not all paid, and sets amount to amount of all subexpenses
+    public void setProperValues(Expense expense){
+
+        if(expense.getSubExpenses().size() > 0){
+            //if parent is paid... set all children to paid
+            if(expense.getPaid() == true){
+                for(int i = 0; i<expense.getSubExpenses().size(); i++){
+                    expense.getSubExpenses().get(i).setPaid(true);
+                }
+            }
+            //set amount to amount of children...
+            //if all children are paid set parent to paid
+            double amount = 0.00;
+            boolean paid = true;
+            for(int i = 0; i<expense.getSubExpenses().size(); i++){
+
+                amount = amount + expense.getSubExpenses().get(i).getAmount();
+
+                if(expense.getSubExpenses().get(i).getPaid() == false){
+                    paid = false;
+                }
+            }
+            expense.setAmount(amount);
+            expense.setPaid(paid);
+
+        }
+
+    }
+
+
 }

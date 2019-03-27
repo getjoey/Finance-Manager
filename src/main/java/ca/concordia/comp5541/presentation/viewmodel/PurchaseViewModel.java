@@ -1,7 +1,9 @@
 package ca.concordia.comp5541.presentation.viewmodel;
 
+import ca.concordia.comp5541.model.SubExpense;
 import ca.concordia.comp5541.model.PaymentMethod;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -20,8 +22,9 @@ public class PurchaseViewModel extends ExpenseViewModel {
                             double amount,
                             boolean paid,
                             PaymentMethod paymentMethod,
-                            Date dueDate) {
-        super(id, date, description, amount, paid, "Purchase");
+                            Date dueDate,
+                             ArrayList<SubExpense> subExpenses) {
+        super(id, date, description, amount, paid, "Purchase", subExpenses);
 
         this.paymentMethod = paymentMethod;
         this.dueDate = dueDate;

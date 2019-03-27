@@ -1,15 +1,13 @@
 import ca.concordia.comp5541.business.ExpenseBusiness;
 import ca.concordia.comp5541.controller.BillController;
-import ca.concordia.comp5541.model.Bill;
-import ca.concordia.comp5541.model.PaymentMethod;
-import ca.concordia.comp5541.model.Purchase;
-import ca.concordia.comp5541.model.RepeatInterval;
+import ca.concordia.comp5541.model.*;
 import ca.concordia.comp5541.presentation.viewmodel.BillViewModel;
 import ca.concordia.comp5541.utils.EnumHelper;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,6 +18,7 @@ public class BillControllerTest {
 
     Bill bill1;
     Purchase purchase1;
+    ArrayList<SubExpense> subExpenses;
 
     @Before
     public void before() throws Exception {
@@ -29,10 +28,18 @@ public class BillControllerTest {
         bill1 = new Bill();
         bill1.setInterval(RepeatInterval.ANNUALLY);
         bill1.setAmount(100);
+        subExpenses = bill1.getSubExpenses();
+        subExpenses.add(new SubExpense());
+        subExpenses.get(0).setAmount(24.44);
+
 
         purchase1 = new Purchase();
         purchase1.setPaymentMethod(PaymentMethod.CREDIT);
         purchase1.setAmount(50);
+        subExpenses = purchase1.getSubExpenses();
+        subExpenses.add(new SubExpense());
+        subExpenses.get(0).setAmount(24.44);
+
 
         expenseBusiness.save(bill1);
         expenseBusiness.save(purchase1);
@@ -49,6 +56,11 @@ public class BillControllerTest {
     @Test
     public void testGetColumnsMetadata() throws Exception {
         assert controller.getColumnsMetadata().get("Interval") == RepeatInterval.class;
+    }
+
+    @Test
+    public void testGetSubExpenses() throws Exception{
+        assert controller.getList().get(0).getSubExpenses().size() == 1;
     }
 
     @Test

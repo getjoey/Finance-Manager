@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class ExpenseController {
     protected ExpenseBusiness expenseBusiness = ExpenseBusiness.getInstance();
 
+
     public Map<String, Class> getColumnsMetadata() {
         Map<String, Class> columnsMetadata = new LinkedHashMap<>();
 
@@ -36,7 +37,8 @@ public class ExpenseController {
                         e.getDescription(),
                         e.getAmount(),
                         e.getPaid(),
-                        e.getInterval())).collect(Collectors.toList());
+                        e.getInterval(),
+                        e.getSubExpenses())).collect(Collectors.toList());
 
         List<ExpenseViewModel> purchases = expenseBusiness.fetchPurchases().stream().map(e ->
                 new PurchaseViewModel(
@@ -46,13 +48,25 @@ public class ExpenseController {
                         e.getAmount(),
                         e.getPaid(),
                         e.getPaymentMethod(),
-                        e.getDueDate())).collect(Collectors.toList());
+                        e.getDueDate(),
+                        e.getSubExpenses())).collect(Collectors.toList());
 
         return ListUtils.union(bills, purchases);
     }
 
-    public String getTotal() {
-        double total = getList().stream().mapToDouble(r -> r.getAmount()).sum();
+    public String getTotal(boolean filter) {
+        double total = 0.00;
+        if(filter){
+            for(int i=0; i<getList().size(); i++){
+                if(getList().get(i).getPaid() == false){
+                    total = total + getList().get(i).getAmount();
+                }
+            }
+        }
+        else{
+            total = getList().stream().mapToDouble(r -> r.getAmount()).sum();
+        }
+
         return FormatHelper.numberToCurrency(total);
     }
 
@@ -70,4 +84,7 @@ public class ExpenseController {
 
         return expenseBusiness.delete(model);
     }
+
+
+
 }
